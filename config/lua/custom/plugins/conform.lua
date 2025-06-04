@@ -17,6 +17,7 @@ return {
         json = { 'prettierd' },
         templ = { 'tailwind_tools', 'templ' },
         markdown = { 'mdformat' },
+        go = { 'gofmt' },
 
         html = { 'tailwind_tools', 'prettierd' },
         -- pug = { 'prettierd' },
