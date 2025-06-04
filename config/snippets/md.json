@@ -1,0 +1,7 @@
+{
+  "frontmatter": {
+    "prefix": "fm",
+    "body": "---\n${1:key}: ${2:value}\n---",
+    "description": "YAML frontmatter"
+  }
+}

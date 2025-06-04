@@ -1,0 +1,7 @@
+{
+  "table driven test": {
+    "prefix": "tdtt",
+    "body": "func Test$1(t *testing.T) {\n\ttestCases := []struct {\n\t\tdesc  string\n\t\tinput $4\n\t\twant  $5\n\t}{\n\t\t{desc: \"$6\", input: $7, want: $8},\n\t}\n\tfor _, tC := range testCases {\n\t\tt.Run(tC.desc, func(t *testing.T) {\n\t\t\tans := ${3:myfunction}(tC.input)\n\t\t\tif ans != tC.want {\n\t\t\t\tt.Errorf(\"FAIL %s: got %v, want %v\", tC.desc, ans, tC.want)\n\t\t\t}\n\t\t})\n\t}\n}\n",
+    "description": "Snippet for table driven test but better"
+  }
+}

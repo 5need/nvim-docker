@@ -1,0 +1,25 @@
+services:
+  nvim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-nvim
+    container_name: nvim
+    user: "${MYUID}:${MYGID}" # Run as host user
+    volumes:
+      - /home/mccullen:/home/mccullen
+      - ./config:/home/mccullen/.config/nvim
+      - ./local:/home/mccullen/.local
+      # - ./cache:/home/mccullen/.cache
+      # - "${MYPWD}/:/workspace"
+      # - /home/mccullen/go:/home/mccullen/go # go stuff
+    # working_dir: /workspace
+    # working_dir: /home/mccullen
+    working_dir: "${MYPWD}"
+    environment:
+      - HOME=/home/mccullen
+      - GOCACHE=/home/mccullen/.cache/go-build
+      - GOBIN=/home/mccullen/go/bin
+      - GOPATH=/home/mccullen/go
+    stdin_open: true
+    tty: true
