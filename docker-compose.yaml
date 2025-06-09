@@ -10,16 +10,16 @@ services:
       - /home/mccullen:/home/mccullen
       - ./config:/home/mccullen/.config/nvim
       - ./local:/home/mccullen/.local
-      # - ./cache:/home/mccullen/.cache
-      # - "${MYPWD}/:/workspace"
-      # - /home/mccullen/go:/home/mccullen/go # go stuff
-    # working_dir: /workspace
-    # working_dir: /home/mccullen
+      # Get wl-copy and wl-paste working
+      - "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:/run/user/${MYUID}/${WAYLAND_DISPLAY}"
     working_dir: "${MYPWD}"
     environment:
       - HOME=/home/mccullen
       - GOCACHE=/home/mccullen/.cache/go-build
       - GOBIN=/home/mccullen/go/bin
       - GOPATH=/home/mccullen/go
+      # Get wl-copy and wl-paste working
+      - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+      - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
     stdin_open: true
     tty: true

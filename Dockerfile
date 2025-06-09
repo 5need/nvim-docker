@@ -34,11 +34,16 @@ RUN pacman -S --noconfirm mdformat;
 RUN pacman -S --noconfirm luarocks;
 RUN pacman -S --noconfirm perl;
 RUN pacman -S --noconfirm cpanminus;
+RUN pacman -S --noconfirm wl-clipboard;
+RUN pacman -S --noconfirm lazygit;
 RUN pacman -Scc --noconfirm;
 
 RUN rustup default stable;
 RUN npm install -g @fsouza/prettierd;
 RUN /usr/bin/vendor_perl/cpanm -n Neovim::Ext;
 RUN gem install neovim;
+
+RUN mkdir -p /run/user && chmod 777 /run/user;
+RUN mkdir -p /run/user/1000 && chmod 777 /run/user/1000;
 
 ENTRYPOINT ["nvim"]
