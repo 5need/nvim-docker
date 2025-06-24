@@ -51,5 +51,13 @@ return {
     }
     -- setup must be called before loading
     vim.cmd.colorscheme 'catppuccin'
+
+    -- setup more highlight groups
+    vim.api.nvim_set_hl(0, 'VertSplit', { fg = 'NONE', bg = 'NONE' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1e1e2e' })
+    vim.api.nvim_set_hl(0, 'Pmenu', { bg = '#1e1e2e' })
+    vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000', bg = 'NONE' })
+    vim.opt.fillchars:append { vert = ' ' }
+    vim.opt.fillchars:append { eob = ' ' }
   end,
 }
