@@ -115,12 +115,12 @@ vim.o.relativenumber = true
 vim.o.laststatus = 3
 
 -- go to next line when pressing right at last character
--- vim.o.whichwrap:append '<>[]hl'
+vim.o.whichwrap = '<>hl'
 vim.o.wrap = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
-vim.o.colorcolumn = '81'
+-- vim.o.colorcolumn = '81'
 vim.o.sidescrolloff = 20
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -897,6 +897,9 @@ require('lazy').setup({
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
 
+        ['<C-n>'] = { 'snippet_forward' },
+        ['<C-S-n>'] = { 'snippet_backward' },
+
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
@@ -910,13 +913,24 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        -- menu = {
+        --   draw = {
+        --     columns = {
+        --       { 'label', 'label_description', gap = 0 },
+        --       { 'kind_icon', 'kind' },
+        --     },
+        --   },
+        -- },
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' },
         providers = {
+          -- lazydev is for completions for nvim config editin
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          -- fallbacks = {} makes it so that buffer source is always on
+          -- lsp = { fallbacks = {} },
         },
       },
 
@@ -935,29 +949,6 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
-  -- added in plugins
-  -- { -- You can easily change to a different colorscheme.
-  --   -- Change the name of the colorscheme plugin below, and then
-  --   -- change the command in the config to whatever the name of that colorscheme is.
-  --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-  --   'folke/tokyonight.nvim',
-  --   priority = 1000, -- Make sure to load this before all the other start plugins.
-  --   config = function()
-  --     ---@diagnostic disable-next-line: missing-fields
-  --     require('tokyonight').setup {
-  --       styles = {
-  --         comments = { italic = false }, -- Disable italics in comments
-  --       },
-  --     }
-  --
-  --     -- Load the colorscheme here.
-  --     -- Like many other themes, this one has different styles, and you could load
-  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  --     vim.cmd.colorscheme 'tokyonight'
-  --   end,
-  -- },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -978,7 +969,7 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- require('mini.surround').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
