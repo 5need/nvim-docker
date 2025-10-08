@@ -7,5 +7,20 @@ return {
     'nvim-telescope/telescope.nvim', -- optional
     'neovim/nvim-lspconfig', -- optional
   },
-  opts = {}, -- your configuration
+  opts = {
+    server = {
+      override = true,
+      settings = { -- shortcut for `settings.tailwindCSS`
+        includeLanguages = {
+          pug = 'jade',
+        },
+      },
+    },
+    -- extension = {
+    --   patterns = {
+    --     pug = { 'class=["\']([^"\']+)["\']' },
+    --     jade = { 'class=["\']([^"\']+)["\']' },
+    --   },
+    -- },
+  },
 }

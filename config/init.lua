@@ -513,8 +513,8 @@ require('lazy').setup({
         require('Comment.api').toggle.linewise(vim.fn.visualmode())
       end, { desc = 'Comment Selection' })
 
-      vim.keymap.set('n', '<right>', ':cnext<CR>zz', { desc = 'Next quickfix item' })
-      vim.keymap.set('n', '<left>', ':cprev<CR>zz', { desc = 'Previous quickfix item' })
+      -- vim.keymap.set('n', '<right>', ':cnext<CR>zz', { desc = 'Next quickfix item' })
+      -- vim.keymap.set('n', '<left>', ':cprev<CR>zz', { desc = 'Previous quickfix item' })
 
       vim.keymap.set('n', '<leader>f/', require('telescope.builtin').current_buffer_fuzzy_find, { desc = 'Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Search files' })
@@ -969,7 +969,28 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      -- require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          -- add = 'sa', -- Add surrounding in Normal and Visual modes
+          -- delete = 'sd', -- Delete surrounding
+          -- find = 'sf', -- Find surrounding (to the right)
+          -- find_left = 'sF', -- Find surrounding (to the left)
+          -- highlight = 'sh', -- Highlight surrounding
+          -- replace = 'sr', -- Replace surrounding
+          add = 'ys', -- Add surrounding
+          delete = 'ds', -- Delete surrounding
+          find = '', -- Disable
+          find_left = '', -- Disable
+          highlight = '', -- Disable
+          replace = 'cs', -- Replace surrounding
+
+          suffix_last = 'l', -- Suffix to search with "prev" method
+          suffix_next = 'n', -- Suffix to search with "next" method
+        },
+
+        -- Number of lines within which surrounding is searched
+        n_lines = 500,
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,

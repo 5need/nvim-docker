@@ -36,6 +36,7 @@ RUN pacman -S --noconfirm perl;
 RUN pacman -S --noconfirm cpanminus;
 RUN pacman -S --noconfirm wl-clipboard;
 RUN pacman -S --noconfirm lazygit;
+RUN pacman -S --noconfirm typescript;
 RUN pacman -Scc --noconfirm;
 
 RUN rustup default stable;
