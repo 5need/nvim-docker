@@ -66,6 +66,17 @@ return {
             end,
           }
         end,
+        -- Customize the "injected" formatter
+        prettierd = {
+          -- Set the options field
+          -- options = {
+          --   -- Set individual option values
+          --   ignore_errors = true,
+          --   lang_to_formatters = {
+          --     json = { 'jq' },
+          --   },
+          -- },
+        },
         -- rustywind_custom = function()
         --   ---@type conform.FileFormatterConfig
         --   return {
@@ -74,36 +85,36 @@ return {
         --     args = { '--output-css-file', vim.fn.getcwd() .. '/static/output.css', '--stdin' },
         --   }
         -- end,
-        prettierd = function()
-          local util = require 'conform.util'
-          ---@type conform.FileFormatterConfig
-          return {
-            meta = {
-              url = 'https://github.com/fsouza/prettierd',
-              description = 'prettier, as a daemon, for ludicrous formatting speed.',
-            },
-            command = 'prettierd',
-            args = { '$FILENAME' },
-            range_args = function(ctx)
-              local start_offset, end_offset = util.get_offsets_from_range(ctx.buf, ctx.range)
-              return { '$FILENAME', '--range-start=' .. start_offset, '--range-end=' .. end_offset }
-            end,
-            cwd = util.root_file {
-              -- https://prettier.io/docs/en/configuration.html
-              '.prettierrc',
-              '.prettierrc.json',
-              '.prettierrc.yml',
-              '.prettierrc.yaml',
-              '.prettierrc.json5',
-              '.prettierrc.js',
-              '.prettierrc.cjs',
-              '.prettierrc.toml',
-              'prettier.config.js',
-              'prettier.config.cjs',
-              'package.json',
-            },
-          }
-        end,
+        -- prettierd = function()
+        --   local util = require 'conform.util'
+        --   ---@type conform.FileFormatterConfig
+        --   return {
+        --     meta = {
+        --       url = 'https://github.com/fsouza/prettierd',
+        --       description = 'prettier, as a daemon, for ludicrous formatting speed.',
+        --     },
+        --     command = 'prettierd',
+        --     args = { '$FILENAME' },
+        --     range_args = function(ctx)
+        --       local start_offset, end_offset = util.get_offsets_from_range(ctx.buf, ctx.range)
+        --       return { '$FILENAME', '--range-start=' .. start_offset, '--range-end=' .. end_offset }
+        --     end,
+        --     cwd = util.root_file {
+        --       -- https://prettier.io/docs/en/configuration.html
+        --       '.prettierrc',
+        --       '.prettierrc.json',
+        --       '.prettierrc.yml',
+        --       '.prettierrc.yaml',
+        --       '.prettierrc.json5',
+        --       '.prettierrc.js',
+        --       '.prettierrc.cjs',
+        --       '.prettierrc.toml',
+        --       'prettier.config.js',
+        --       'prettier.config.cjs',
+        --       'package.json',
+        --     },
+        --   }
+        -- end,
       },
       -- formatters = {
       --   my_formatter = {

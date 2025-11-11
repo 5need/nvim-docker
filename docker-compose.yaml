@@ -21,5 +21,6 @@ services:
       # Get wl-copy and wl-paste working
       - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
       - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+      # - PRETTIERD_DEFAULT_CONFIG=./config/.prettierrc.json
     stdin_open: true
     tty: true
