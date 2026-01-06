@@ -13,7 +13,7 @@ return {
       ['go.mod'] = { glyph = '󰟓', hl = 'MiniIconsCyan' },
     },
     filetype = {
-      templgo = { glyph = '󰟓', hl = 'MiniIconsGrey' },
+      templgo = { glyph = '—', hl = 'OilHidden' },
     },
     extension = {
       templ = { glyph = '', hl = 'MiniIconsAzure' },
