@@ -31,7 +31,6 @@ return {
       max_height = 0,
     },
     win_options = {
-      signcolumn = 'yes:1',
       number = false,
       relativenumber = false,
       wrap = true,
