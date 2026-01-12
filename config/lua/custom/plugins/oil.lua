@@ -24,6 +24,12 @@ return {
       is_always_hidden = function(name, _)
         return name == '..'
       end,
+      highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
+        if entry.name:match '.*_templ%.go$' then
+          return 'OilHidden'
+        end
+        return nil
+      end,
     },
     float = {
       padding = 0,
@@ -36,14 +42,6 @@ return {
       wrap = true,
       winblend = 0,
       winbar = '%!v:lua.get_oil_winbar()',
-    },
-    view_options = {
-      highlight_filename = function(entry, is_hidden, is_link_target, is_link_orphan)
-        if entry.name:match '.*_templ%.go$' then
-          return 'OilHidden'
-        end
-        return nil
-      end,
     },
     keymaps = {
       ['<leader>e'] = 'actions.close',
