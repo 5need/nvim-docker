@@ -38,7 +38,7 @@ return {
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-        return { timeout_ms = 500, lsp_fallback = true }
+        return { timeout_ms = 500, lsp_fallback = true, undojoin = true }
       end,
 
       -- If this is set, Conform will run the formatter asynchronously after save.
