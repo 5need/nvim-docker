@@ -488,6 +488,11 @@ do
   local builtin = require 'telescope.builtin'
   vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = 'Recently opened files' })
   vim.keymap.set('n', '<leader><leader>', '<cmd>w<cr>', { desc = 'Save' })
+  vim.keymap.set('n', '<leader>w', function()
+    vim.b.disable_autoformat = true
+    vim.cmd 'write'
+    vim.b.disable_autoformat = false
+  end, { desc = 'Save without formatting' })
 
   vim.pack.add { gh 'numToStr/Comment.nvim' }
   require('Comment').setup()
