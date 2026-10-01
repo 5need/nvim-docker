@@ -10,6 +10,7 @@ services:
       - /home/mccullen:/home/mccullen
       - ./config:/home/mccullen/.config/nvim
       - ./local:/home/mccullen/.local
+      - /tmp/tmux-1000/default:/tmp/tmux-host
       # Get wl-copy and wl-paste working
       - "${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:/run/user/${MYUID}/${WAYLAND_DISPLAY}"
     working_dir: "${MYPWD}"

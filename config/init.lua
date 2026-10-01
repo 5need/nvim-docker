@@ -207,20 +207,9 @@ do
   vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
 
   vim.api.nvim_create_user_command('LazyGit', function()
-    vim.cmd 'terminal lazygit'
-
-    local buf = vim.api.nvim_get_current_buf()
-
-    vim.api.nvim_create_autocmd('TermClose', {
-      buffer = buf,
-      callback = function()
-        vim.api.nvim_buf_delete(buf, { force = true })
-      end,
-    })
-
-    vim.cmd 'startinsert'
+    vim.fn.system 'tmux -S /tmp/tmux-host display-popup -E -w 90% -h 90% lazygit'
   end, {
-    desc = 'Open LazyGit in a :terminal',
+    desc = 'Open LazyGit in a tmux popup',
   })
 
   -- Open file explorer
