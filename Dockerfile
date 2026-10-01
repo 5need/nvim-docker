@@ -39,6 +39,7 @@ RUN pacman -S --noconfirm wl-clipboard;
 RUN pacman -S --noconfirm lazygit;
 RUN pacman -S --noconfirm typescript;
 RUN pacman -S --noconfirm dotnet-sdk;
+RUN pacman -S --noconfirm lazygit;
 RUN pacman -Scc --noconfirm;
 
 RUN rustup default stable;

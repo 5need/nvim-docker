@@ -206,6 +206,23 @@ do
   -- lazygit
   vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
 
+  vim.api.nvim_create_user_command('LazyGit', function()
+    vim.cmd 'terminal lazygit'
+
+    local buf = vim.api.nvim_get_current_buf()
+
+    vim.api.nvim_create_autocmd('TermClose', {
+      buffer = buf,
+      callback = function()
+        vim.api.nvim_buf_delete(buf, { force = true })
+      end,
+    })
+
+    vim.cmd 'startinsert'
+  end, {
+    desc = 'Open LazyGit in a :terminal',
+  })
+
   -- Open file explorer
   vim.keymap.set('n', '<leader>e', '<cmd>Oil<CR>', { silent = true })
 
