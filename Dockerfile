@@ -16,6 +16,7 @@ RUN pacman -S --noconfirm nodejs;
 RUN pacman -S --noconfirm npm;
 RUN pacman -S --noconfirm python;
 RUN pacman -S --noconfirm python-pip;
+RUN pacman -S --noconfirm python-pipx;
 RUN pacman -S --noconfirm wget;
 RUN pacman -S --noconfirm rustup;
 RUN pacman -S --noconfirm lua;
@@ -44,6 +45,7 @@ RUN rustup default stable;
 RUN npm install -g @fsouza/prettierd;
 RUN /usr/bin/vendor_perl/cpanm -n Neovim::Ext;
 RUN gem install neovim;
+RUN pipx install XmlFormatter
 
 RUN mkdir -p /run/user && chmod 777 /run/user;
 RUN mkdir -p /run/user/1000 && chmod 777 /run/user/1000;

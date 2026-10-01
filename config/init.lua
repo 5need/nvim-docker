@@ -794,6 +794,7 @@ do
       -- pug = { 'prettierd' },
       handlebars = { 'tailwind_tools', 'djlint' },
       rust = { 'rustfmt' },
+      xml = { 'xmlformatter' },
       -- Use the "*" filetype to run formatters on all filetypes.
       -- ['*'] = { 'codespell' },
       -- Use the "_" filetype to run formatters on filetypes that don't
