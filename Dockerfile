@@ -3,6 +3,7 @@ FROM archlinux:base
 # Avoid interactive prompts
 ENV TERM=xterm
 
+
 RUN pacman -Syu --noconfirm;
 RUN pacman -S --noconfirm neovim;
 RUN pacman -S --noconfirm git;
