@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd('FileType', {
       vim.wo.relativenumber = false
       vim.wo.cursorline = false
       vim.wo.signcolumn = 'no'
+      vim.wo.wrap = true
     end
   end,
 })
