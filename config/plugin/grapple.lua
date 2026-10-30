@@ -1,7 +1,7 @@
 vim.pack.add { 'https://github.com/nvim-lua/plenary.nvim' }
 vim.pack.add { 'https://github.com/cbochs/grapple.nvim' }
 require('grapple').setup {
-  scope = 'git', -- also try out "git_branch"
+  scope = 'git_branch', -- also try out "git_branch"
 }
 vim.keymap.set('n', '<leader><M-space>', '<cmd>Grapple toggle<cr>', { desc = 'Grapple toggle tag' })
 vim.keymap.set('n', '<M-space>', '<cmd>Grapple toggle_tags<cr>', { desc = 'Grapple open tags window' })
