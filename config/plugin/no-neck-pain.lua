@@ -36,3 +36,14 @@ vim.api.nvim_create_autocmd('FileType', {
     end
   end,
 })
+
+vim.api.nvim_create_user_command('Restart', function()
+  require('no-neck-pain').disable()
+
+  -- Wait for NoNeckPain's debounced disable to finish.
+  vim.wait(1000, function()
+    return not _G.NoNeckPain.state.enabled
+  end, 10)
+
+  vim.cmd 'restart'
+end, {})
