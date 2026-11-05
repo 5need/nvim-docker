@@ -794,7 +794,7 @@ do
       json = { 'prettierd' },
       templ = { 'tailwind_tools', 'templ' },
       markdown = { 'mdformat' },
-      go = { 'gofmt' },
+      go = { 'goimports_reviser' },
 
       html = { 'tailwind_tools', 'prettierd' },
       -- pug = { 'prettierd' },
@@ -822,6 +822,16 @@ do
         }
       end,
       prettierd = {},
+      goimports_reviser = {
+        command = 'goimports-reviser',
+        args = {
+          '-rm-unused',
+          '-set-alias',
+          '-format',
+          '$FILENAME',
+        },
+        stdin = false,
+      },
     },
   }
 
