@@ -827,10 +827,11 @@ do
         args = {
           '-rm-unused',
           '-set-alias',
+          '-output',
+          'stdout',
           '-format',
           '$FILENAME',
         },
-        stdin = false,
       },
     },
   }
