@@ -206,6 +206,8 @@ do
   -- lazygit
   vim.keymap.set('n', '<leader>gg', '<cmd>LazyGit<cr>', { silent = true })
 
+  vim.keymap.set('n', '<leader>ll', '<cmd>Restart<cr>', { silent = true })
+
   vim.api.nvim_create_user_command('LazyGit', function()
     vim.fn.system 'tmux -S /tmp/tmux-host display-popup -E -w 90% -h 90% lazygit'
   end, {
