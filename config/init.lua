@@ -519,7 +519,9 @@ do
 
   vim.keymap.set('n', '<leader>f/', builtin.current_buffer_fuzzy_find, { desc = 'Fuzzily search in current buffer' })
   vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Search files' })
-  vim.keymap.set('n', '<leader>fF', builtin.live_grep, { desc = 'Search by Grep' })
+  vim.keymap.set('n', '<leader>fF', function()
+    builtin.live_grep { additional_args = { '--glob', '!*_templ.go' } }
+  end, { desc = 'Search by Grep' })
   vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Search Diagnostics' })
   vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Search Resume' })
 
@@ -895,6 +897,9 @@ do
       --
       -- See `:help blink-cmp-config-keymap` for defining your own keymap
       preset = 'default',
+
+      ['<Tab>'] = { 'fallback' },
+      ['<S-Tab>'] = { 'fallback' },
 
       ['<C-n>'] = { 'snippet_forward' },
       ['<C-S-n>'] = { 'snippet_backward' },
