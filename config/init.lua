@@ -517,6 +517,8 @@ do
 
   vim.keymap.set('n', '<leader><right>', ':cnext<CR>zz', { desc = 'Next quickfix item' })
   vim.keymap.set('n', '<leader><left>', ':cprev<CR>zz', { desc = 'Previous quickfix item' })
+  vim.keymap.set('n', '<C-j>', ':cprev<CR>zz', { desc = 'Previous quickfix item' })
+  vim.keymap.set('n', '<C-;>', ':cnext<CR>zz', { desc = 'Next quickfix item' })
   vim.keymap.set('n', '<leader><down>', ':cclose<CR>', { desc = 'Close quickfix menu' })
 
   vim.keymap.set('n', '<leader>f/', builtin.current_buffer_fuzzy_find, { desc = 'Fuzzily search in current buffer' })
