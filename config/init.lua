@@ -469,18 +469,20 @@ do
 
   -- See `:help telescope` and `:help telescope.setup()`
   require('telescope').setup {
-    file_ignore_patterns = { '%.min%.js$', '_templ%.go$', 'node_modules/' },
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-      n = {
-        ['<leader>q'] = function(prompt_bufnr)
-          require('telescope.actions').send_to_qflist(prompt_bufnr)
-          vim.cmd 'copen'
-          vim.cmd 'cc'
-        end,
+    defaults = {
+      file_ignore_patterns = { '%.min%.js$', '_templ%.go$', 'node_modules/' },
+      mappings = {
+        i = {
+          ['<C-u>'] = false,
+          ['<C-d>'] = false,
+        },
+        n = {
+          ['<leader>q'] = function(prompt_bufnr)
+            require('telescope.actions').send_to_qflist(prompt_bufnr)
+            vim.cmd 'copen'
+            vim.cmd 'cc'
+          end,
+        },
       },
     },
     extensions = {
@@ -519,9 +521,7 @@ do
 
   vim.keymap.set('n', '<leader>f/', builtin.current_buffer_fuzzy_find, { desc = 'Fuzzily search in current buffer' })
   vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Search files' })
-  vim.keymap.set('n', '<leader>fF', function()
-    builtin.live_grep { additional_args = { '--glob', '!*_templ.go' } }
-  end, { desc = 'Search by Grep' })
+  vim.keymap.set('n', '<leader>fF', builtin.live_grep, { desc = 'Search by Grep' })
   vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Search Diagnostics' })
   vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Search Resume' })
 
